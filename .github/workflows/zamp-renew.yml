@@ -1,8 +1,7 @@
 name: Zamp续期
 
 on:
-  schedule:
-    - cron: '0 0 * * *'
+
   workflow_dispatch:
 
 jobs:
@@ -22,7 +21,7 @@ jobs:
         run: |
           pip install selenium requests
 
-      - name: Run renew script
+      - name: Run renewapp script
         env:
           USERNAME: ${{ secrets.ZAMPTO_USER }}
           PASSWORD: ${{ secrets.ZAMPTO_PASS }}
