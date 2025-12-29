@@ -21,7 +21,7 @@ jobs:
         run: |
           pip install selenium requests
 
-      - name: Run renewapp script
+      - name: Run renew script
         env:
           USERNAME: ${{ secrets.ZAMPTO_USER }}
           PASSWORD: ${{ secrets.ZAMPTO_PASS }}
