@@ -1,5 +1,6 @@
 name: Zamp续期
 
+
 on:
   schedule:
     - cron: '0 0 * * *'   # 北京时间 08:00
@@ -18,11 +19,14 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser
+
+      - name: Install Python deps
         run: |
           pip install selenium requests
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser chromium-chromedriver
 
       - name: Run renew
         env:
@@ -31,4 +35,6 @@ jobs:
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
           TG_CHAT_ID: ${{ secrets.TG_CHAT_ID }}
         run: |
+          which chromium-browser
+          chromium-browser --version
           python app.py
